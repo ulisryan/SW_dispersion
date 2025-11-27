@@ -47,7 +47,7 @@ aligned_cost(index,:)=linearly(particle(index,10)+1,particle(index,11)+1,:);
 end
 
 max_I = 2.0 / (pi * w0z * w0y) * sqrt(4.0 * log(2.0) / (pi * tau * tau));
-max_I = max_I * 0.959 * 1.0e-3;
+max_I = max_I * 0.959 *0.948*1.0e-3;
 I1=max_I .* I1_list(I_ind);
 I2=max_I .* I2_list(I_ind);
 
