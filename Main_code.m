@@ -26,7 +26,7 @@ particle(:,5)=y_init_vel_sigma*randn(MAX,1);
 particle(:,6)=z_init_vel_off+z_init_vel_sigma*randn(MAX,1);
 
 laser(:,1)=Dye_sigma*randn(MAX,1);
-laser(:,2)=(Dye_tau)*randn(MAX,1)/2;
+laser(:,2)=(Dye_tau)*randn(MAX,1)/sqrt(3);
 laser(:,3)= (-Ij_distribution+randi([0 Ij_distribution*2],MAX,1))* 1e-12;
 laser(:,4)= Ips_z.*randn(MAX,1)* 1e-9;
 laser(:,5)= Ips_y.*randn(MAX,1)* 1e-9;
