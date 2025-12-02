@@ -19,7 +19,9 @@ aligned_cost=zeros(MAX,2001);
 load('linearly.mat')
 
 %postion and velocity
-particle(:,1)=x_position_fwhm/2.355 *randn(MAX,1); 
+% particle(:,1)=x_position_fwhm/2.355 *randn(MAX,1); 
+particle(:,1)=-500+randi([0 999],MAX,1); % -500 ~ 500
+
 particle(:,2)=Dye_sigma*randn(MAX,1); 
 particle(:,4)=vx_caused_tilted+x_init_vel_sigma*randn(MAX,1);
 particle(:,5)=y_init_vel_sigma*randn(MAX,1);
