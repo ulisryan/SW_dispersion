@@ -1,7 +1,4 @@
-f = @(x, y, z0, A, mu, w1, w2, xc, yc) ...
-    z0 + A * ( ...
-    ((mu * 4 / pi^2) * w1 * w2) ./ (1 + 4 * ((x - xc) ./ w1).^2 + 4 * ((y - yc) ./ w2).^2) ...
-    + (1 - mu) * (4 * log(2)) / (pi * w1 * w2) * exp(-4 * log(2) / w1^2 * (x - xc).^2 - 4 * log(2) / w2^2 * (y - yc).^2) );
+f = @(x, y, p) voigt2d_aniso_rot(x, y, p);
 
 %electron repulsion term
 vx_rand=rep_std*randn(MAX,1); %sigma = rep_std를 가지는 normaldistribution 해당하는 MAX개 추출
@@ -24,11 +21,12 @@ xgrid=-125:125;
 ygrid=-125:125;
 
 [xgird_2, ygrid_2]=meshgrid(xgrid,ygrid);
-z0=-1.5; A=1117567;
-xc=0; yc=0; mu=6.3e-4;
-w1=6.306*0.92; w2=8.015*0.92;
-M=f(xgird_2, ygrid_2, z0, A, mu, w1, w2, xc, yc);
+pFit = [-3.698853876412670	2.554394107105213e+04	0.441357801223283	6.354598584616713	6.584074190809296	8.250163296670557	9.417167979585598	0	0	-0.477546278665701];
+% atten_factor = 1;
 
+% pFit([4,6]) = pFit([4,6]) * atten_factorx;
+% pFit([5,7]) = pFit([5,7]) * atten_factory;
+M=f(xgird_2*atten_factorx, ygrid_2*atten_factory, pFit);
 h2d=cell(numel(I2_list),1);
 img_matrix=cell(numel(I2_list),1);
 for ind = 1:numel(I2_list)
